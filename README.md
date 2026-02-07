@@ -3,11 +3,11 @@
 Static site. Open `index.html` locally or host the folder as-is on any static host.
 
 ## Icons
-`assets/icons.svg` contains SVG symbols. Use:
-`<svg><use href="assets/icons.svg#icon_name"/></svg>`
+`icons.svg` contains SVG symbols. Use:
+`<svg><use href="icons.svg#icon_name"/></svg>`
 
 ## Animation
-The interactive CD visual is an inline SVG controlled by `assets/site.js`. Crack locations do not move; only intensity changes. Site respects `prefers-reduced-motion` by hiding the motion demo.
+The interactive CD visual is an inline SVG controlled by `site.js`. Crack locations do not move; only intensity changes. Site respects `prefers-reduced-motion` by hiding the motion demo.
 
 ## Pages
 - index.html
