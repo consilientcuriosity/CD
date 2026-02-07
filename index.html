@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Consilient Design — Understanding systems before they break</title>
+  <meta name="description" content="Consilient Design (CD) — understanding systems before they break."/>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Consilient Design home">
+        <svg aria-hidden="true"><use href="assets/icons.svg#icon_cd"/></svg>
+        <div class="title">Consilient Design</div>
+      </a>
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="what-is-cd.html">What is CD</a>
+        <a href="see-the-system.html">See the system</a>
+        <a href="lenses.html">Choose your lens</a>
+        <a href="use-cd.html">How to use CD</a>
+        <a href="governance.html">Governance & ethics</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    
+<section class="hero">
+  <div class="kicker">Understanding systems before they break</div>
+  <h1>Most systems don’t fail loudly.<br/>They fail quietly — while still appearing to work.</h1>
+  <p class="lede">Consilient Design (CD) helps people notice <strong>clinical depletion</strong>: when a system keeps functioning while losing its ability to adapt or recover. CD is a diagnostic and design framework for staying within limits — without blame, panic, or spectacle.</p>
+  <div class="btns">
+    <a class="btn primary" href="what-is-cd.html">Start: What is CD</a>
+    <a class="btn" href="see-the-system.html">See the system</a>
+    <a class="btn" href="lenses.html">Choose your lens</a>
+  </div>
+</section>
+
+<div class="grid cols-3">
+  <div class="card">
+    <div class="badge"><span class="dot flow"></span> Flow</div>
+    <h3>Flow is pressure</h3>
+    <p class="small">Demand, activity, extraction, pace, throughput — anything that draws on a system.</p>
+  </div>
+  <div class="card">
+    <div class="badge"><span class="dot boundary"></span> Boundary</div>
+    <h3>Boundaries are capacity</h3>
+    <p class="small">Limits, structures, care, time, bandwidth, regeneration — what keeps the system healthy.</p>
+  </div>
+  <div class="card">
+    <div class="badge"><span class="dot void"></span> Clinical depletion</div>
+    <h3>Depletion is quiet</h3>
+    <p class="small">Capacity erodes before failure is visible. Patterns become patchy. Recovery slows. Options close.</p>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<section class="grid cols-2">
+  <div class="card">
+    <h2 style="margin-top:0">Four lenses, one framework</h2>
+    <p class="small">CD is one coherent framework. This site offers four entry points for different audiences — without changing meaning.</p>
+    <div class="pill-row">
+      <span class="pill">Everyday / Human</span>
+      <span class="pill">Education & Learning</span>
+      <span class="pill">Institutions & Governance</span>
+      <span class="pill">Ecological</span>
+    </div>
+    <div class="btns">
+      <a class="btn" href="lenses.html">Explore lenses</a>
+      <a class="btn" href="governance.html">Why CD avoids spectacle</a>
+    </div>
+  </div>
+
+  <div class="card anim-wrap">
+    <h2 style="margin-top:0">Interactive: clinical depletion</h2>
+    <p class="small">Move the slider to see accumulation: stable crack locations, widening over time, boundary thinning, and a late-stage “void”.</p>
+    <label class="small" for="damage"><strong>Damage / depletion:</strong> <span id="damageLabel">0%</span></label>
+    <input id="damage" type="range" min="0" max="1" step="0.01" value="0" style="width:100%; margin:10px 0 8px"/>
+    <div class="motion-ok">
+<svg id="cdViz" class="diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360">
+  <defs>
+    <radialGradient id="gCore" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(124,227,255,0.95)"/>
+      <stop offset="65%" stop-color="rgba(124,227,255,0.35)"/>
+      <stop offset="100%" stop-color="rgba(124,227,255,0)"/>
+    </radialGradient>
+    <linearGradient id="gFlow" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="rgba(124,227,255,0.0)"/>
+      <stop offset="25%" stop-color="rgba(124,227,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(124,227,255,0.10)"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <text x="30" y="40" fill="rgba(233,233,242,.75)" font-size="14" font-family="ui-sans-serif,system-ui">Flow (demand / activity)</text>
+  <text x="620" y="40" fill="rgba(233,233,242,.75)" font-size="14" font-family="ui-sans-serif,system-ui">Boundary (capacity / limits)</text>
+
+  <g id="flowCore" filter="url(#softGlow)">
+    <circle cx="180" cy="180" r="58" fill="url(#gCore)"/>
+    <circle cx="180" cy="180" r="18" fill="rgba(176,123,255,.85)"/>
+  </g>
+
+  <g id="flowSpray" opacity="0.65">
+    <path d="M230 180 C 360 130, 460 130, 600 160" stroke="url(#gFlow)" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <path d="M230 180 C 360 200, 470 220, 600 200" stroke="rgba(124,227,255,0.22)" stroke-width="10" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <g>
+    <circle id="boundaryRing" cx="690" cy="180" r="105" stroke="rgba(124,227,255,.55)" stroke-width="8" fill="rgba(124,227,255,.05)"/>
+    <circle id="warnPulse" cx="690" cy="180" r="105" stroke="rgba(255,207,90,.85)" stroke-width="10" fill="none" opacity="0"/>
+  </g>
+
+  <g id="cracks" opacity="0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M620 150 C 650 140, 660 160, 675 155 C 700 146, 715 158, 740 148" stroke="rgba(9,12,24,.85)" fill="none"/>
+    <path d="M636 205 C 662 190, 680 208, 700 202 C 720 196, 740 216, 762 205" stroke="rgba(9,12,24,.80)" fill="none"/>
+    <path d="M660 120 C 670 140, 688 142, 698 160 C 712 186, 736 176, 748 190" stroke="rgba(9,12,24,.80)" fill="none"/>
+    <path d="M644 250 C 668 236, 690 250, 712 238 C 730 228, 750 240, 770 232" stroke="rgba(9,12,24,.78)" fill="none"/>
+  </g>
+  <g id="cracks2" opacity="0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M612 180 C 640 170, 650 190, 678 180 C 702 172, 714 186, 740 176" stroke="rgba(9,12,24,.90)" fill="none"/>
+    <path d="M680 78 C 674 102, 700 114, 706 138 C 714 170, 758 162, 770 186" stroke="rgba(9,12,24,.85)" fill="none"/>
+  </g>
+
+  <g id="voidLayer" opacity="0">
+    <path d="M650 190 C 670 162, 720 164, 742 192 C 722 220, 672 222, 650 190Z" fill="rgba(11,13,26,.92)"/>
+    <path d="M675 115 C 692 102, 712 108, 728 124 C 712 140, 692 142, 675 115Z" fill="rgba(11,13,26,.80)"/>
+  </g>
+
+  <text x="560" y="300" fill="rgba(185,187,214,.9)" font-size="13" font-family="ui-sans-serif,system-ui">Move the slider: stable cracks widen; boundary thins; void appears late.</text>
+</svg>
+</div>
+    <div class="legend">
+      <span><i class="dot flow"></i> Flow</span>
+      <span><i class="dot boundary"></i> Boundary</span>
+      <span><i class="dot warning"></i> Warning window</span>
+      <span><i class="dot void"></i> Void (late)</span>
+    </div>
+    <div class="note" style="margin-top:12px">
+      <strong>Important:</strong> this visual is <em>diagnostic</em>, not predictive. It shows capacity trends and risk signatures — not fate, blame, or deadlines.
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="small">
+        CD focuses on capacity, limits, and recovery — not blame, optimisation, or spectacle.
+      </div>
+      <div class="links small">
+        <a href="index.html">Home</a>
+        <a href="lenses.html">Lenses</a>
+        <a href="governance.html">Governance</a>
+      </div>
+      <div class="small" style="margin-top:10px; opacity:.85">
+        © 2026 Consilient Design — public explanation site (v1.0).
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
