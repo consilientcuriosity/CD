@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>See the system — Flow, boundaries, clinical depletion</title>
+  <meta name="description" content="Consilient Design (CD) — understanding systems before they break."/>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Consilient Design home">
+        <svg aria-hidden="true"><use href="assets/icons.svg#icon_cd"/></svg>
+        <div class="title">Consilient Design</div>
+      </a>
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="what-is-cd.html">What is CD</a>
+        <a href="see-the-system.html">See the system</a>
+        <a href="lenses.html">Choose your lens</a>
+        <a href="use-cd.html">How to use CD</a>
+        <a href="governance.html">Governance & ethics</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    
+<section class="hero">
+  <div class="kicker">See the system</div>
+  <h1>Flow meets boundaries. If recovery is missing, stress accumulates.</h1>
+  <p class="lede">CD uses a simple visual language to help people notice capacity loss early. The goal is not drama — it’s diagnosis.</p>
+</section>
+
+<div class="grid cols-2">
+  <div class="card">
+    <h2 style="margin-top:0">How to read CD visuals</h2>
+    <table class="table">
+      <thead><tr><th>What you see</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Crack locations stay fixed</td><td>History matters. Damage is path-dependent.</td></tr>
+        <tr><td>Cracks widen slowly</td><td>Recovery is failing. Capacity is being used up.</td></tr>
+        <tr><td>Patchiness increases</td><td>Fragmentation replaces coherence.</td></tr>
+        <tr><td>No explosions or shatter</td><td>Collapse is not a “moment”; it’s an accumulation.</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:12px"><strong>CD visuals do not predict outcomes.</strong> They support reflection: where is load exceeding recovery? Where are limits being ignored?</div>
+  </div>
+
+  <div class="card anim-wrap">
+    <h2 style="margin-top:0">Interactive: clinical depletion</h2>
+    <label class="small" for="damage"><strong>Damage / depletion:</strong> <span id="damageLabel">10%</span></label>
+    <input id="damage" type="range" min="0" max="1" step="0.01" value="0.10" style="width:100%; margin:10px 0 8px"/>
+    <div class="motion-ok">
+<svg id="cdViz" class="diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360">
+  <defs>
+    <radialGradient id="gCore" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(124,227,255,0.95)"/>
+      <stop offset="65%" stop-color="rgba(124,227,255,0.35)"/>
+      <stop offset="100%" stop-color="rgba(124,227,255,0)"/>
+    </radialGradient>
+    <linearGradient id="gFlow" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="rgba(124,227,255,0.0)"/>
+      <stop offset="25%" stop-color="rgba(124,227,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(124,227,255,0.10)"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <text x="30" y="40" fill="rgba(233,233,242,.75)" font-size="14" font-family="ui-sans-serif,system-ui">Flow (demand / activity)</text>
+  <text x="620" y="40" fill="rgba(233,233,242,.75)" font-size="14" font-family="ui-sans-serif,system-ui">Boundary (capacity / limits)</text>
+
+  <g id="flowCore" filter="url(#softGlow)">
+    <circle cx="180" cy="180" r="58" fill="url(#gCore)"/>
+    <circle cx="180" cy="180" r="18" fill="rgba(176,123,255,.85)"/>
+  </g>
+
+  <g id="flowSpray" opacity="0.65">
+    <path d="M230 180 C 360 130, 460 130, 600 160" stroke="url(#gFlow)" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <path d="M230 180 C 360 200, 470 220, 600 200" stroke="rgba(124,227,255,0.22)" stroke-width="10" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <g>
+    <circle id="boundaryRing" cx="690" cy="180" r="105" stroke="rgba(124,227,255,.55)" stroke-width="8" fill="rgba(124,227,255,.05)"/>
+    <circle id="warnPulse" cx="690" cy="180" r="105" stroke="rgba(255,207,90,.85)" stroke-width="10" fill="none" opacity="0"/>
+  </g>
+
+  <g id="cracks" opacity="0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M620 150 C 650 140, 660 160, 675 155 C 700 146, 715 158, 740 148" stroke="rgba(9,12,24,.85)" fill="none"/>
+    <path d="M636 205 C 662 190, 680 208, 700 202 C 720 196, 740 216, 762 205" stroke="rgba(9,12,24,.80)" fill="none"/>
+    <path d="M660 120 C 670 140, 688 142, 698 160 C 712 186, 736 176, 748 190" stroke="rgba(9,12,24,.80)" fill="none"/>
+    <path d="M644 250 C 668 236, 690 250, 712 238 C 730 228, 750 240, 770 232" stroke="rgba(9,12,24,.78)" fill="none"/>
+  </g>
+  <g id="cracks2" opacity="0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M612 180 C 640 170, 650 190, 678 180 C 702 172, 714 186, 740 176" stroke="rgba(9,12,24,.90)" fill="none"/>
+    <path d="M680 78 C 674 102, 700 114, 706 138 C 714 170, 758 162, 770 186" stroke="rgba(9,12,24,.85)" fill="none"/>
+  </g>
+
+  <g id="voidLayer" opacity="0">
+    <path d="M650 190 C 670 162, 720 164, 742 192 C 722 220, 672 222, 650 190Z" fill="rgba(11,13,26,.92)"/>
+    <path d="M675 115 C 692 102, 712 108, 728 124 C 712 140, 692 142, 675 115Z" fill="rgba(11,13,26,.80)"/>
+  </g>
+
+  <text x="560" y="300" fill="rgba(185,187,214,.9)" font-size="13" font-family="ui-sans-serif,system-ui">Move the slider: stable cracks widen; boundary thins; void appears late.</text>
+</svg>
+</div>
+    <div class="callout" style="margin-top:12px"><strong>Clinical depletion:</strong> the system continues to “work,” but its ability to recover or adapt is declining.</div>
+  </div>
+</div>
+
+<section class="card" style="margin-top:16px">
+  <h2 style="margin-top:0">Animation script (public)</h2>
+  <ul class="small">
+    <li><strong>Story:</strong> healthy → warning window → depletion → brittle state</li>
+    <li><strong>Invariant:</strong> crack locations do not move</li>
+    <li><strong>Primary signal:</strong> widening and thinning</li>
+    <li><strong>Pacing:</strong> slow (12–24 seconds if auto-played)</li>
+  </ul>
+</section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="small">
+        CD focuses on capacity, limits, and recovery — not blame, optimisation, or spectacle.
+      </div>
+      <div class="links small">
+        <a href="index.html">Home</a>
+        <a href="lenses.html">Lenses</a>
+        <a href="governance.html">Governance</a>
+      </div>
+      <div class="small" style="margin-top:10px; opacity:.85">
+        © 2026 Consilient Design — public explanation site (v1.0).
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,6 +1,3 @@
-# CD
-A public-facing site that explains Consilient Design (CD): how systems lose capacity quietly, why limits matter, and how to design for recovery without blame or spectacle.
-
 # Consilient Design — Public Explanation Site (HTML)
 
 Static site. Open `index.html` locally or host the folder as-is on any static host.
